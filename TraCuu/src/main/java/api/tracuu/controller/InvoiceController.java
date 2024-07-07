@@ -30,7 +30,7 @@ public class InvoiceController {
         }
     }
 
-    @GetMapping("/Invoice")
+    @GetMapping("/invoice")
     public ResponseEntity<List<Invoice>> xemDanhSachHoaDon() {
         try {
             List<Invoice> invoiceList = new ArrayList<>();
@@ -47,8 +47,9 @@ public class InvoiceController {
     }
 
     @GetMapping("/Invoice/{maHoaDon}")
-    public ResponseEntity<Invoice> getHoaDonByMaHoaDon(@PathVariable int maHoaDon) {
-        Optional<Invoice> invoice = invoiceRepository.findById(maHoaDon);
+    public ResponseEntity<Invoice> getHoaDonByMaHoaDon(@PathVariable double maHoaDon) {
+        Optional<Invoice> invoice = invoiceRepository.findByMaHoaDon(maHoaDon);
+        log.info("getHoaDonByMaHoaDon: " + invoice);
         if (invoice.isPresent()) {
             return ResponseEntity.ok(invoice.get());
         } else {

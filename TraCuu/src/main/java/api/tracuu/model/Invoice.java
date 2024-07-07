@@ -3,15 +3,16 @@ package api.tracuu.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
+@Document(collection = "invoices")
 public class Invoice {
-    @Id
-    private int maHoaDon;
+    private double maHoaDon;
     private String kyHieu;
     private int soHoaDon;
     private String loTrinh;
@@ -20,7 +21,8 @@ public class Invoice {
     private String soXe;
     private LocalDateTime thoiGianXuatBen;
     private LocalDate ngayKhoiHanh;
-    public Invoice(int maHoaDon, String kyHieu, int soHoaDon, String loTrinh, int giaVe, String soGhe, String soXe, LocalDateTime thoiGianXuatBen, LocalDate ngayKhoiHanh) {
+
+    public Invoice(double maHoaDon, String kyHieu, int soHoaDon, String loTrinh, int giaVe, String soGhe, String soXe, LocalDateTime thoiGianXuatBen, LocalDate ngayKhoiHanh) {
         super();
         this.maHoaDon = maHoaDon;
         this.kyHieu = kyHieu;
