@@ -19,7 +19,7 @@ const InvoiceSearch = () => {
             const response = await axios.get(`http://localhost:8085/api/Invoice/${invoiceNumber}`);
             setInvoiceDetails(response.data);
         } catch (err) {
-            setError('Error fetching invoice details. Please check the invoice number and try again.');
+            setError('Không tìm thấy hóa đơn, vui lòng kiểm tra và nhập lại.');
             setInvoiceDetails(null);
         }
         setLoading(false);
@@ -89,7 +89,7 @@ const InvoiceSearch = () => {
                 >
                     {loading ? 'Searching...' : 'Search'}
                 </button>
-                {error && <div className="absolute bg-white shadow-md rounded p-4 border border-gray-300">{error}</div>}
+                {error && <div className="tab fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">{error}</div>}
 
             </div>
             {invoiceDetails && (
